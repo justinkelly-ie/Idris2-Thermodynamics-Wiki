@@ -1,0 +1,21 @@
+package Idris2-Thermodynamics-Wiki
+version = 0.1.0
+authors = "Justin Kelly"
+brief   = "Layer 8 Bounded Pre-ordered Monoids & Entropic Arrow Verification Suite"
+
+depends = base
+        , Idris2-Multiset-Core
+        , Idris2-Multiset-Transform
+        , Idris2-Geometry
+        , Idris2-Topology
+        , Idris2-Cellular
+        , Idris2-Physics
+        , Idris2-Fields
+        , Idris2-Thermodynamics
+
+sourcedir = "Library"
+
+modules = Wiki.Main
+
+main = Wiki.Main
+executable = lthermodynamics-wiki
