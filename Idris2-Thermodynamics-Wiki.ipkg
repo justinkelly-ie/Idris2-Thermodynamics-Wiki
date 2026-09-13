@@ -23,4 +23,4 @@ modules = Wiki.Main
         , Wiki.EntropicArrowSpec
 
 main = Wiki.Main
-executable = lthermodynamics-wiki
+executable = thermodynamics-wiki
