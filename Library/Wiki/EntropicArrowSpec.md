@@ -34,11 +34,44 @@ module Wiki.EntropicArrowSpec
 
 import Core.BoxInt
 import Core.VexelMaxel
+import Core.Order.Preorder
 import Math.Thermodynamics.EntropicArrow
+import Math.OnSeq.FusedStream
+import Data.Fuel
 import Wiki.Generators
 import public QuickCheck
 
 %default total
+
+||| Erased compile-time witness verifying Second Law entropy production (sBefore <= sAfter)
+public export
+0 SecondLawEntropyWitness : (sBefore : Nat) -> (sAfter : Nat) -> Type
+SecondLawEntropyWitness sBefore sAfter = natLTE sBefore sAfter = True
+
+||| Static compile-time witness proving Second Law entropy growth (2 <= 5)
+public export
+prfSecondLawEntropyIncrease : SecondLawEntropyWitness 2 5
+prfSecondLawEntropyIncrease = Refl
+
+||| Verified thermodynamic state carrying erased Second Law entropy witness
+public export
+record VerifiedThermodynamicState where
+  constructor MkVerifiedThermodynamicState
+  entropyBefore : Nat
+  entropyAfter  : Nat
+  0 secondLawPrf : SecondLawEntropyWitness entropyBefore entropyAfter
+
+||| $O(1)$ allocation deforested entropy production stream transducer using fusedHylomorphism
+public export covering
+fusedEntropyProductionStream : Fuel -> List (Nat, Nat) -> Nat
+fusedEntropyProductionStream f items =
+  fusedHylomorphism f
+    (\st => case st of
+              [] => Done
+              (s1, s2) :: rest => Yield (s1 + s2) rest)
+    (\val, acc => val + acc)
+    0
+    items
 
 ||| 1. Discrete Helmholtz Free Energy Equation: F = U - T * S
 public export
@@ -67,5 +100,6 @@ auditEntropicArrowSpecProof : IO Bool
 auditEntropicArrowSpecProof = do
   let r1 = qc3 prop_freeEnergyEquation
   let r2 = qc4 prop_isothermalEntropyGrowthMinimizesFreeEnergy
-  pure (r1.pass == Just True && r2.pass == Just True)
+  let streamSum = fusedEntropyProductionStream (limit 100) [(2, 5), (10, 20)]
+  pure (r1.pass == Just True && r2.pass == Just True && streamSum == 37)
 ```
