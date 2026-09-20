@@ -2,6 +2,7 @@ module Wiki.Generators
 
 import public QuickCheck
 import Core.BoxInt
+import Core.VexelMaxel
 import Math.Thermodynamics.EntropicArrow
 
 %default total
@@ -12,13 +13,12 @@ Arbitrary BoxInt where
   coarbitrary (MkBoxInt v) gen = coarbitrary (the Integer v) gen
 
 public export
-Arbitrary ThermoState where
-  arbitrary = do
-    u <- arbitrary
-    t <- arbitrary
-    s <- arbitrary
-    pure (MkThermoState u t s)
-  coarbitrary (MkThermoState u t s) gen = coarbitrary u (coarbitrary t (coarbitrary s gen))
+genThermoVexel : Gen Vexel
+genThermoVexel = do
+  u <- arbitrary
+  t <- arbitrary
+  s <- arbitrary
+  pure (thermoVexel u t s)
 
 public export
 qc : (Arbitrary a, Show a, Testable prop) => (a -> prop) -> QCRes

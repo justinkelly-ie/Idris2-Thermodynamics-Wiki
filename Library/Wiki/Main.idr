@@ -6,6 +6,7 @@ import Core.BoxInt
 import Core.Goh
 import Wiki.PreorderedMonoidSpec
 import Wiki.EntropicArrowSpec
+import Wiki.FluctuationStreamSpec
 
 %default total
 
@@ -29,8 +30,11 @@ main = do
   putStrLn $ "  [TEST 3] Preordered Monoid Reflexivity & Monotonicity (QuickCheck): " ++ (if p1 then "PASSED ✅" else "FAILED ❌")
   p2 <- auditEntropicArrowSpecProof
   putStrLn $ "  [TEST 4] Helmholtz Free Energy & Isothermal Entropy Minimization (QuickCheck): " ++ (if p2 then "PASSED ✅" else "FAILED ❌")
+  p3 <- auditFluctuationStreamSpecProof
+  putStrLn $ "  [TEST 5] Work/Entropy Fluctuation Stream Jarzynski Linear Bound: " ++ (if p3 then "PASSED ✅" else "FAILED ❌")
   putStrLn "========================================================"
-  if p1 && p2
+  if p1 && p2 && p3
      then putStrLn " ✨ ALL LAYER 8 THERMODYNAMIC SUITES & QUICKCHECK PASSED ✨"
      else putStrLn " ❌ LAYER 8 VERIFICATION FAILED"
   putStrLn "========================================================"
+

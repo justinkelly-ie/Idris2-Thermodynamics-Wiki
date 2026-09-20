@@ -3,24 +3,15 @@ version = 0.1.0
 authors = "Justin Kelly"
 brief   = "Layer 8 Bounded Pre-ordered Monoids & Entropic Arrow Verification Suite"
 
-depends = base
-        , contrib
-        , idris2-QuickCheck
-        , Idris2-Multiset-Core
-        , Idris2-Multiset-Transform
-        , Idris2-Geometry
-        , Idris2-Topology
-        , Idris2-Cellular
-        , Idris2-Physics
-        , Idris2-Fields
-        , Idris2-Thermodynamics
-
+depends = Idris2-Multiset-Core, Idris2-Multiset-Transform, Idris2-Thermodynamics, base, idris2-QuickCheck, linear
 sourcedir = "Library"
 
-modules = Wiki.Main
-        , Wiki.Generators
-        , Wiki.PreorderedMonoidSpec
-        , Wiki.EntropicArrowSpec
+modules = Wiki.EntropicArrowSpec,
+          Wiki.FluctuationStreamSpec,
+          Wiki.Generators,
+          Wiki.Main,
+          Wiki.PreorderedMonoidSpec
+
 
 main = Wiki.Main
 executable = thermodynamics-wiki
