@@ -19,7 +19,7 @@ Documents and verifies discrete Helmholtz free energy calculations ($F = U - T \
 
 ## 2. Mathematical Foundation & Thermodynamic Laws
 
-Layer 8 `Idris2-Thermodynamics` defines irreversible state transitions and free energy minimization over discrete `Vexel` multiset states:
+Layer 8 `FinSc-Thermodynamics` defines irreversible state transitions and free energy minimization over discrete `Vexel` multiset states:
 
 1. **Discrete Helmholtz Free Energy**: $F(v) = \text{thermoInternalEnergy}(v) - (\text{thermoTemperature}(v) \cdot \text{thermoEntropy}(v))$
 2. **Entropic Arrow of Time**: Isothermal entropy growth ($\Delta S \ge 0$) guarantees free energy drop ($\Delta F \le 0$).

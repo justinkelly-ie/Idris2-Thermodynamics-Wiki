@@ -6,7 +6,7 @@ Documents and verifies bounded pre-ordered poset laws, reflexivity, transitivity
 
 ## 1. Mathematical Foundation & Pre-ordered Poset Homomorphisms
 
-Layer 8 `Idris2-Thermodynamics` establishes pre-ordered state space structures:
+Layer 8 `FinSc-Thermodynamics` establishes pre-ordered state space structures:
 
 1. **Reflexivity Law**: $\forall b \in \text{BoxInt},\, b \le b$
 2. **Monoid Addition Monotonicity (Order Homomorphism)**: $a \le b \implies (a + c) \le (b + c)$

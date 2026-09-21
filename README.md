@@ -1,6 +1,6 @@
-# 📘 Idris2-Thermodynamics-Wiki (Layer 8 Specification & Verification)
+# 📘 FinSc-Thermodynamics-Wiki (Layer 8 Specification & Verification)
 
-This repository contains the executable wiki specifications, QuickCheck property suites, and formal proof witnesses for **Layer 8** (`Idris2-Thermodynamics`).
+This repository contains the executable wiki specifications, QuickCheck property suites, and formal proof witnesses for **Layer 8** (`FinSc-Thermodynamics`).
 
 ---
 
@@ -23,5 +23,5 @@ This repository contains the executable wiki specifications, QuickCheck property
 To build and run the complete Layer 8 test suite inside `fedora-toolbox-44`:
 
 ```bash
-toolbox run -c fedora-toolbox-44 bash -c "cd /var/home/justin/Projects/Idris2-Thermodynamics && idris2 --install Idris2-Thermodynamics.ipkg && cd /var/home/justin/Projects/Idris2-Thermodynamics-Wiki && idris2 --build Idris2-Thermodynamics-Wiki.ipkg && ./build/exec/thermodynamics-wiki"
+toolbox run -c fedora-toolbox-44 bash -c "cd /var/home/justin/Projects/FinSc-Thermodynamics && idris2 --install FinSc-Thermodynamics.ipkg && cd /var/home/justin/Projects/FinSc-Thermodynamics-Wiki && idris2 --build FinSc-Thermodynamics-Wiki.ipkg && ./build/exec/thermodynamics-wiki"
 ```
